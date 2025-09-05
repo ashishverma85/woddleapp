@@ -1,97 +1,261 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# WoddleApp - React Native Kids Tracker
 
-# Getting Started
+A React Native application for tracking kids' daily activities including weight, diaper changes, feeding, and sleep patterns. Features a swipeable carousel interface for multiple children.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 📱 Features
 
-## Step 1: Start Metro
+- **Multi-Child Support**: Swipeable carousel to track multiple children
+- **Activity Tracking**: Monitor weight, diaper changes, feeding, and sleep
+- **Modern UI**: Clean, intuitive interface with custom fonts and styling
+- **Cross-Platform**: Runs on both iOS and Android
+- **E2E Testing**: Comprehensive Detox testing suite
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 🛠 Tech Stack
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- **React Native**: 0.81.1
+- **React**: 19.1.0
+- **Node.js**: >=22
+- **TypeScript**: 5.8.3
+- **Detox**: 20.41.1 (E2E Testing)
+- **Jest**: 29.7.0 (Unit Testing)
 
-```sh
-# Using npm
+## 📋 Prerequisites
+
+Before running this project, ensure you have the following installed:
+
+### Required Software
+- **Node.js**: >=22 (Recommended: Latest LTS version)
+- **npm**: Comes with Node.js
+- **React Native CLI**: `npm install -g @react-native-community/cli`
+- **Java Development Kit (JDK)**: 11 or higher
+- **Android Studio**: Latest version
+- **Xcode**: Latest version (macOS only)
+
+### Android Setup
+- **Android SDK**: API level 24+
+- **Android Emulator**: Pixel 8a (or compatible device)
+- **Environment Variables**:
+  ```bash
+  export ANDROID_HOME=$HOME/Library/Android/sdk
+  export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+  export PATH=$PATH:$ANDROID_HOME/emulator
+  export PATH=$PATH:$ANDROID_HOME/tools
+  export PATH=$PATH:$ANDROID_HOME/tools/bin
+  export PATH=$PATH:$ANDROID_HOME/platform-tools
+  ```
+
+### iOS Setup (macOS only)
+- **Xcode**: Latest version from App Store
+- **CocoaPods**: `sudo gem install cocoapods`
+- **iOS Simulator**: iPhone 14 or compatible
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd woddleapp
+```
+
+### 2. Install Dependencies
+```bash
+npm install
+```
+
+### 3. iOS Setup (macOS only)
+```bash
+cd ios
+pod install
+cd ..
+```
+
+### 4. Start Metro Bundler
+```bash
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+### 5. Run the App
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+#### Android
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+#### iOS (macOS only)
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## 🧪 Testing
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+This project includes comprehensive testing setup with both unit tests and end-to-end tests.
 
-## Step 3: Modify your app
+### Unit Tests
+```bash
+npm test
+```
 
-Now that you have successfully run the app, let's make changes!
+### E2E Tests with Detox
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+#### Prerequisites for E2E Testing
+- Android emulator running (Pixel_8a_new)
+- App built and installed on emulator
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+#### Build for Testing
+```bash
+# Android
+npm run e2e:build:android
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+# iOS (macOS only)
+npm run e2e:build:ios
+```
 
-## Congratulations! :tada:
+#### Run E2E Tests
+```bash
+# Android
+npm run e2e:test:android
 
-You've successfully run and modified your React Native App. :partying_face:
+# iOS (macOS only)
+npm run e2e:test:ios
+```
 
-### Now what?
+#### E2E Test Details
+The test suite includes:
+- **Kids Carousel Test**: Verifies first kid's name visibility, swipes to next kid, and verifies second kid's name
+- **TestIDs**: Uses `kidName-0`, `kidName-1`, and `kidsCarousel` for reliable element selection
+- **Synchronization**: Disabled to prevent React Native idling resource crashes
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+#### Debug E2E Tests
+```bash
+# Run with verbose output
+ANDROID_SDK_ROOT=$HOME/Library/Android/sdk detox test --configuration android.emu.debug --verbose
 
-# Troubleshooting
+# Run with visual mode (see test execution)
+ANDROID_SDK_ROOT=$HOME/Library/Android/sdk detox test --configuration android.emu.debug --headless false
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+# Run specific test file
+ANDROID_SDK_ROOT=$HOME/Library/Android/sdk detox test --configuration android.emu.debug e2e/firstTest.test.js
+```
 
-# Learn More
+## 📁 Project Structure
 
-To learn more about React Native, take a look at the following resources:
+```
+woddleapp/
+├── android/                 # Android-specific code
+│   ├── app/
+│   │   ├── src/
+│   │   │   ├── main/       # Main Android code
+│   │   │   └── androidTest/ # Detox instrumentation tests
+│   │   └── build.gradle    # Android build configuration
+│   └── build.gradle        # Root Android build file
+├── ios/                    # iOS-specific code
+│   ├── childapp/
+│   └── Podfile
+├── e2e/                    # End-to-end tests
+│   ├── firstTest.test.js   # Main Detox test
+│   └── jest.config.js      # Jest configuration for E2E
+├── assets/                 # Images and fonts
+├── App.js                  # Main application component
+├── App.tsx                 # TypeScript app component
+├── package.json            # Dependencies and scripts
+├── .detoxrc.js            # Detox configuration
+└── README.md              # This file
+```
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## 🔧 Available Scripts
+
+| Script | Description |
+|--------|-------------|
+| `npm start` | Start Metro bundler |
+| `npm run android` | Run on Android device/emulator |
+| `npm run ios` | Run on iOS simulator (macOS only) |
+| `npm test` | Run unit tests |
+| `npm run lint` | Run ESLint |
+| `npm run e2e:build:android` | Build Android app for E2E testing |
+| `npm run e2e:build:ios` | Build iOS app for E2E testing |
+| `npm run e2e:test:android` | Run Android E2E tests |
+| `npm run e2e:test:ios` | Run iOS E2E tests |
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+#### Android Build Issues
+```bash
+# Clean and rebuild
+cd android
+./gradlew clean
+cd ..
+npm run android
+```
+
+#### Metro Bundler Issues
+```bash
+# Clear Metro cache
+npx react-native start --reset-cache
+```
+
+#### Detox Test Issues
+```bash
+# Clean Detox cache
+detox clean-framework-cache
+detox build-framework-cache
+
+# Rebuild test APK
+npm run e2e:build:android
+```
+
+#### Watchman Issues
+```bash
+# Reset Watchman
+watchman watch-del '/path/to/childapp'
+watchman watch-project '/path/to/childapp'
+```
+
+### Environment Issues
+- Ensure `ANDROID_SDK_ROOT` is set correctly
+- Verify emulator is running before E2E tests
+- Check that all dependencies are installed
+
+## 📱 App Features
+
+### Kids Management
+- **Christian Bowen**: 1y 2m old
+- **Aanya Kapoor**: 11m old
+
+### Activity Tracking
+- **Weight**: Track in lbs and oz
+- **Diaper**: Type (Pee/Poop) and size
+- **Feeding**: Type and amount
+- **Sleep**: Duration tracking
+
+### UI Components
+- Swipeable carousel for multiple kids
+- Color-coded activity cards
+- Modern typography with custom fonts
+- Responsive design for different screen sizes
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Run the test suite
+6. Submit a pull request
+
+## 📄 License
+
+This project is private and proprietary.
+
+## 📞 Support
+
+For issues and questions:
+1. Check the troubleshooting section
+2. Review the test logs
+3. Ensure all prerequisites are met
+4. Create an issue with detailed error information
+
+---
+
+**Happy Testing! 🎉**

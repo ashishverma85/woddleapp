@@ -1,0 +1,23 @@
+{
+  "testRunner": "jest",
+  "runnerConfig": "e2e/jest.config.js",
+  "apps": {
+    "android.debug": {
+      "type": "android.apk",
+      "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug",
+      "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk"
+    }
+  },
+  "devices": {
+    "android.emu": {
+      "type": "android.emulator",
+      "device": { "avdName": "Pixel_8a_new" }
+    }
+  },
+  "configurations": {
+    "android.emu.debug": {
+      "device": "android.emu",
+      "app": "android.debug"
+    }
+  }
+}
