@@ -50,8 +50,8 @@ function AppContent() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" backgroundColor={Colors.background} />
-      
-      <ScrollView 
+
+      <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
@@ -104,25 +104,25 @@ function AppContent() {
           <FeedingCard feeding={activeKid.stats.feeding} />
           <SleepCard sleep={activeKid.stats.sleep} />
         </View>
-        
+
         {/* Add bottom padding to account for fixed navigation */}
         <View style={styles.bottomPadding} />
       </ScrollView>
 
       {/* Bottom nav - Fixed at bottom */}
       <View style={styles.nav}>
-        <NavItem 
-          icon={Images.home} 
-          label="Home" 
-          style={styles.navItemLeft} 
+        <NavItem
+          icon={Images.home}
+          label="Home"
+          style={styles.navItemLeft}
         />
         <View style={styles.fab}>
           <Image source={Images.icon} style={styles.fabIcon} />
         </View>
-        <NavItem 
-          icon={Images.dot} 
-          label="More" 
-          style={styles.navItemRight} 
+        <NavItem
+          icon={Images.dot}
+          label="More"
+          style={styles.navItemRight}
         />
       </View>
     </SafeAreaView>
@@ -138,20 +138,20 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  safeArea: { 
-    flex: 1, 
+  safeArea: {
+    flex: 1,
     backgroundColor: Colors.background,
   },
-  
+
   scrollView: {
     flex: 1,
   },
-  
+
   scrollContent: {
     flexGrow: 1,
     paddingBottom: Layout.navHeight + 20, // Space for fixed navigation
   },
-  
+
   topBar: {
     paddingHorizontal: Layout.padding.lg,
     paddingTop: Layout.padding.lg,
@@ -161,32 +161,33 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: Layout.margin.md,
   },
-  
-  brandWrap: { 
-    flexDirection: 'row', 
-    alignItems: 'center' 
+
+  brandWrap: {
+    flexDirection: 'row',
+    alignItems: 'center'
   },
-  
+
   logo: {
     width: 140,
     height: 40,
     resizeMode: 'contain',
   },
-  
-  avatar: { 
-    width: Layout.avatarSize, 
-    height: Layout.avatarSize, 
-    borderRadius: Layout.borderRadius.full 
+
+  avatar: {
+    width: Layout.avatarSize,
+    height: Layout.avatarSize,
+    borderRadius: Layout.borderRadius.full
   },
 
-  hero: { 
-    height: Layout.heroHeight + 10, 
-    justifyContent: 'center', 
-    backgroundColor: Colors.background 
+  hero: {
+    height: Layout.heroHeight + 10,
+    justifyContent: 'center',
+    backgroundColor: Colors.background
   },
-  
-  carouselItem: { 
-    width: Layout.screenWidth 
+
+  carouselItem: {
+    width: Layout.screenWidth,
+    paddingHorizontal: Layout.padding.lg,
   },
 
   dots: {
@@ -197,12 +198,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  
-  dot: { 
-    width: Layout.dotSize, 
-    height: Layout.dotSize, 
-    borderRadius: Layout.dotSize / 2, 
-    marginHorizontal: Layout.margin.xs 
+
+  dot: {
+    width: Layout.dotSize,
+    height: Layout.dotSize,
+    borderRadius: Layout.dotSize / 2,
+    marginHorizontal: Layout.margin.xs
   },
 
   grid: {
@@ -212,7 +213,7 @@ const styles = StyleSheet.create({
     paddingTop: Layout.margin.md,
     gap: Layout.spacing.md,
   },
-  
+
   bottomPadding: {
     height: 20,
   },
@@ -239,17 +240,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3,
   },
-  
+
   navItemLeft: {
     position: 'absolute',
     left: '15%',
   },
-  
+
   navItemRight: {
     position: 'absolute',
     right: '15%',
   },
-  
+
   fab: {
     position: 'absolute',
     alignSelf: 'center',
@@ -257,7 +258,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  
+
   fabIcon: {
     width: 92,
     height: 92,
