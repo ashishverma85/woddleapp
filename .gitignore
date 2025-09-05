@@ -57,6 +57,10 @@ yarn-error.log
 # Bundle artifact
 *.jsbundle
 
+# IDE and Editor files
+.vscode/
+.bundle/
+
 # Ruby / CocoaPods
 **/Pods/
 /vendor/bundle/
