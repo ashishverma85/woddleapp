@@ -111,12 +111,7 @@ npx react-native run-ios --configuration Release
 
 ## 🧪 Testing
 
-This project includes comprehensive testing setup with both unit tests and end-to-end tests.
-
-### Unit Tests
-```bash
-npm test
-```
+This project includes comprehensive end-to-end testing with Detox.
 
 ### E2E Tests with Detox
 
@@ -192,7 +187,6 @@ woddleapp/
 | `npm start` | Start Metro bundler |
 | `npm run android` | Run on Android device/emulator |
 | `npm run ios` | Run on iOS simulator (macOS only) |
-| `npm test` | Run unit tests |
 | `npm run lint` | Run ESLint |
 | `npm run e2e:build:android` | Build Android app for E2E testing |
 | `npm run e2e:build:ios` | Build iOS app for E2E testing |
