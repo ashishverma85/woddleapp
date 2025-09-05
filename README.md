@@ -86,6 +86,29 @@ npm run android
 npm run ios
 ```
 
+## 📦 Building for Production
+
+### Android APK Build
+```bash
+# Debug APK
+cd android
+./gradlew assembleDebug
+# APK will be generated at: android/app/build/outputs/apk/debug/app-debug.apk
+
+# Release APK (requires signing)
+./gradlew assembleRelease
+# APK will be generated at: android/app/build/outputs/apk/release/app-release.apk
+```
+
+### iOS Build (macOS only)
+```bash
+# Build for iOS Simulator
+npx react-native run-ios --configuration Release
+
+# Build for device (requires Apple Developer account)
+# Open ios/woddleapp.xcworkspace in Xcode and archive
+```
+
 ## 🧪 Testing
 
 This project includes comprehensive testing setup with both unit tests and end-to-end tests.
