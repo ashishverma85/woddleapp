@@ -60,6 +60,8 @@ yarn-error.log
 # IDE and Editor files
 .vscode/
 .bundle/
+.idea/
+vendor/
 
 # Ruby / CocoaPods
 **/Pods/
