@@ -1,18 +1,28 @@
 describe('Kids carousel', () => {
   beforeAll(async () => {
-    await device.launchApp({
+    // Platform-specific launch configuration
+    const launchConfig = {
       delete: true,
       permissions: { notifications: 'YES' },
-      launchArgs: {
+    };
+
+    // Add platform-specific launch args
+    if (device.getPlatform() === 'android') {
+      launchConfig.launchArgs = {
         detoxEnableSynchronization: 0,
         detoxEnableNetworkSynchronization: 0,
-      },
-    });
+      };
+    }
+
+    await device.launchApp(launchConfig);
     await device.disableSynchronization();
   });
 
   beforeEach(async () => {
-    await device.reloadReactNative();
+    // Skip reloadReactNative for iOS due to AppDelegate compatibility issues
+    if (device.getPlatform() === 'android') {
+      await device.reloadReactNative();
+    }
   });
 
   it("verifies first kid's name, swipes, and verifies next kid", async () => {
